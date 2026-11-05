@@ -13,11 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: build
+      run: g++ -std=c++17 -Wall -Wextra -pedantic main.cpp fontFunctions.cpp -o fancy-font
+    - name: smoke test
+      run: printf "ABC\n" | ./fancy-font > /dev/null
